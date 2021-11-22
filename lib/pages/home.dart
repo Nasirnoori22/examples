@@ -6,10 +6,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:  AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
