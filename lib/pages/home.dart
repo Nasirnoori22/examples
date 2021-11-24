@@ -1,3 +1,4 @@
+import 'package:example/pages/job_detials.dart';
 import 'package:like_button/like_button.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
@@ -116,7 +117,12 @@ class Home extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(bottom: 50, left: 20),
-                              child:IconButton(onPressed: (){},icon: Icon(Icons.facebook_outlined ), color: Colors.blue,
+                              child:IconButton(onPressed: (){
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => JobDetails()),
+                                );
+                                },icon: Icon(Icons.facebook_outlined ), color: Colors.blue,
                               iconSize: 50,),
                             ),
                             Container(
@@ -183,7 +189,12 @@ class Home extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(bottom: 50, left: 20),
-                              child:IconButton(onPressed: (){},icon: Icon(Icons.linked_camera_rounded ), color: Colors.blue,
+                              child:IconButton(onPressed: (){
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => JobDetails()),
+                                );
+                              },icon: Icon(Icons.linked_camera_rounded ), color: Colors.blue,
                               iconSize: 50,),
                             ),
                             Container(
@@ -250,7 +261,12 @@ class Home extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(bottom: 50, left: 20),
-                              child:IconButton(onPressed: (){},icon: Icon(Icons.linked_camera_rounded ), color: Colors.blue,
+                              child:IconButton(onPressed: (){
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => JobDetails()),
+                                );
+                              },icon: Icon(Icons.flutter_dash ), color: Colors.blue,
                               iconSize: 50,),
                             ),
                             Container(
@@ -317,7 +333,79 @@ class Home extends StatelessWidget {
                           children: [
                             Container(
                               margin: EdgeInsets.only(bottom: 50, left: 20),
-                              child:IconButton(onPressed: (){},icon: Icon(Icons.linked_camera_rounded ), color: Colors.blue,
+                              child:IconButton(onPressed: (){
+                                Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => JobDetails()),
+                                );
+                              },icon: Icon(Icons.flutter_dash ), color: Colors.blue,
+                              iconSize: 50,),
+                            ),
+                            Container(
+                              child: Column(
+                                children: [
+                                  Container(
+                                  margin: EdgeInsets.only(top: 20, right: 68),
+                                  child:Text('Facebook', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w200),),),
+                                  Container(
+                                    margin: EdgeInsets.only(top: 8, left: 20),
+                                    child: Text('Full Time UX Design', style: TextStyle(fontSize: 17, color: Color(0xff312651)),),
+                                  ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: 8, right: 27),
+                                    child: Text('80k - Kabul, AFG'),
+                                  )
+                                
+                                ],
+                              ),
+                            ),
+                            Container(
+                              child: Column(
+                                children: [
+                                   Container(
+                                    margin: EdgeInsets.only(top: 15, right: 0, left: 25),
+                                     child:LikeButton(
+                                      circleColor:
+                                          CircleColor(start: Colors.red, end: Colors.red),
+                                      bubblesColor: BubblesColor(
+                                        dotPrimaryColor: Colors.red,
+                                        dotSecondaryColor: Colors.red,
+                                      ),
+                                      likeBuilder: (bool isLiked) {
+                                        return Icon(
+                                          Icons.favorite,
+                                          color: isLiked ? Colors.deepPurpleAccent : Colors.grey,
+                                          
+                                        );
+                                      },  
+                                     ),
+                                   ),
+                                  Container(
+                                    margin: EdgeInsets.only(top: 30, right: 0, left: 25),
+                                    child: Text('24h',),
+                                  ) 
+                                ],
+                              ),
+                            )
+                          ],
+                        ),  
+                      ),
+                                            Container(
+                        margin: EdgeInsets.only(top: 20),
+                        height: 140,
+                        width: 330,
+                        decoration: BoxDecoration(
+                          color: Color(0xffE5E5E5),
+                            border: Border.all(
+                              color: Colors.white
+                            ),
+                            borderRadius: BorderRadius.all(Radius.circular(18))
+                          ),
+                        child: Row(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(bottom: 50, left: 20),
+                              child:IconButton(onPressed: (){},icon: Icon(Icons.chrome_reader_mode ), color: Colors.blue,
                               iconSize: 50,),
                             ),
                             Container(
