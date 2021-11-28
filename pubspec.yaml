@@ -30,7 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   like_button: ^2.0.3
-
+  flutter_carousel_slider: ^1.0.8
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

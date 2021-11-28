@@ -1,5 +1,4 @@
 import 'dart:ffi';
-
 import 'package:example/pages/home.dart';
 import 'package:example/pages/job_detials.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               Container(
-                child: Image.asset('images/finder.jpg', fit:BoxFit.cover, height: 400, width: 350,),
+                child: Image.asset('images/map.jpg', fit:BoxFit.cover, height: 400, width: 350,),
               ),
               Transform.translate( offset: Offset(0, -60),
               child: Container(
@@ -58,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                         child:Text('Lets Get Started', style: TextStyle(fontSize: 20, color: Colors.white),),),
                         Container(
                         child:IconButton(onPressed: (){
-                            Navigator.push(
+                          Navigator.push(
                             context,
                             MaterialPageRoute(builder: (context) => JobDetails()),
                             );
