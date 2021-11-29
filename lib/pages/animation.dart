@@ -22,15 +22,17 @@ class _AnimationPageState extends State<AnimationPage> {
     Colors.indigo,
     Colors.purple
   ];
+
   final List<String> image = [
-    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80",
-    "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
+    "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F5f8f7f02d1ae76ec7f52e593%2FApple--iPhone--new-iPhone--iPhone-12--iPhone-12-Pro--iPhone-12-Pro-Max--iPhone-12%2F960x0.jpg%3Ffit%3Dscale",
+    "https://pplware.sapo.pt/wp-content/uploads/2020/04/iphone12_5g00.jpg",
+    "https://s3-storage.textopus.nl/wp-content/uploads/2020/04/1241839/06085128/iphone-12-new.jpg",
+    "https://s.hdnux.com/photos/01/14/75/46/20175275/3/rawImage.jpg",
+    "https://www.cronachedellacampania.it/wp-content/uploads/2021/09/iphone13_rosso.jpg",
+    "https://images.everyeye.it/img-notizie/iphone-13-13-mini-13-pro-13-pro-max-trapelano-capacita-batterie-v4-540609-900x900.webp",
+    "https://www.telefonino.net/app/uploads/2021/07/iPhone-13-2.jpg"
   ];
+  
   bool _isPlaying = true;
 
   CarouselSliderController? _sliderController;
@@ -47,7 +49,9 @@ class _AnimationPageState extends State<AnimationPage> {
   Widget build(BuildContext context) {
      return Scaffold(
       appBar: AppBar(
-        
+        backgroundColor: Colors.black ,
+        title: Text('Flutter Image Carousel Slider'),
+        elevation: 0,
       ),
       body: ListView(
         children: <Widget>[
@@ -70,7 +74,7 @@ class _AnimationPageState extends State<AnimationPage> {
                     ),
                   );
                 },
-                slideTransform: CubeTransform(),
+                slideTransform:DepthTransform(),
                 slideIndicator: CircularSlideIndicator(
                   padding: EdgeInsets.only(bottom: 32),
                 ),
