@@ -22,7 +22,6 @@ class _PhotoState extends State<Photo> {
           children: <Widget>[
             GalleryImage(
               imageUrls: [
-                Container()
                 "https://media.istockphoto.com/photos/womens-hand-typing-on-mobile-smartphone-live-chat-chatting-on-web-picture-id1217093906?b=1&k=20&m=1217093906&s=170667a&w=0&h=BhzxqKtMYeA3qvnMv8Tvu6xh1X_xssmMOTcKb0BDuOQ=",
                 "https://scx2.b-cdn.net/gfx/news/hires/2019/2-nature.jpg",
                 "https://isha.sadhguru.org/blog/wp-content/uploads/2016/05/natures-temples.jpg",

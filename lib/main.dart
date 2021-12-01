@@ -5,6 +5,7 @@ import 'package:example/pages/signup.dart';
 import 'package:flutter/material.dart';
 import 'pages/home.dart';
 import 'pages/animation.dart';
+import 'pages/signup_form_validation.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const Photo(),
+      home: const FormValidation(),
     );
   }
 }
