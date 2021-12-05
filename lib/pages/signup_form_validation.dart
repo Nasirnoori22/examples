@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:example/mixins/mixin_form_validation.dart';
+import 'package:flutter/material.dart';
 
 class FormValidation extends StatefulWidget {
   const FormValidation({ Key? key }) : super(key: key);
@@ -8,7 +8,7 @@ class FormValidation extends StatefulWidget {
   _FormValidationState createState() => _FormValidationState();
 }
 
-class _FormValidationState extends State<FormValidation> with ValidatioinMixin{
+class _FormValidationState extends State<FormValidation> with ValidatioinMixin {
   final formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
@@ -41,9 +41,16 @@ class _FormValidationState extends State<FormValidation> with ValidatioinMixin{
         labelText: 'Email Address',
         hintText: 'you@example.com',
       ),
-      validator: ValidateEmail,
-      onSaved: ( value){
-        value = email;
+      validator: (value){
+        if(value == null || value.isEmpty){
+          return 'field required';
+        }
+        if(!value.contains('@')){
+          return 'Please enter valide email';
+        }
+      },
+      onSaved: (value){
+        email = value!;
       }
     );
   }
@@ -56,9 +63,19 @@ class _FormValidationState extends State<FormValidation> with ValidatioinMixin{
         hintText: 'Password',
       ),
 
-      validator: ValidatePassword,
+      validator: (value){
+        if(value == null || value.isEmpty){
+          return 'field required';
+        }
+        if(value.length < 5){
+          return 'please enter strong password';
+        }
+        if(value.contains('&, *, #, !')){
+          return 'dont special characters';
+        }
+      },
       onSaved: (value){
-        value = password;
+        password = value!;
       }
     );
   }
@@ -68,10 +85,9 @@ class _FormValidationState extends State<FormValidation> with ValidatioinMixin{
       color: Colors.blue,
       child: Text('Submit'),
       onPressed:(){
-         print(formKey.currentState!.validate().toString());
         if(formKey.currentState!.validate()){
           formKey.currentState!.save();
-         
+          print('add to API');
         }
       },
     );

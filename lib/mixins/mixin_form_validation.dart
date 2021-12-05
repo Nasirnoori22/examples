@@ -1,7 +1,7 @@
 class ValidatioinMixin{
 
    String ValidateEmail (value){
-        if(value == null || value.isEmpty){
+        if(value == '' || value.isEmpty){
           return 'field required';
         }
         if(!value.contains('@')){
@@ -11,7 +11,7 @@ class ValidatioinMixin{
       }    
   String ValidatePassword (value){
         if(value == '' || value.isEmpty){
-              print(value);
+              
 
           return 'field required';
         }
