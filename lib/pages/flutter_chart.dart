@@ -13,7 +13,7 @@ class _StocksPageState extends State<StocksPage> {
 
   // crate list of spots for the graph by monthly, yearly of Google Stocks
   List<FlSpot> _daylySpots = [
-    FlSpot(0, 10.0),
+    FlSpot(0, 500.0),
     FlSpot(1, 30.0),
     FlSpot(2, 100.0),
     FlSpot(3, 100.0),
@@ -47,18 +47,18 @@ class _StocksPageState extends State<StocksPage> {
   ];
 
   List<FlSpot> _monthlySpots = [
-    FlSpot(0, 110.0),
-    FlSpot(1, 110.0),
-    FlSpot(2, 130.0),
-    FlSpot(3, 100.0),
-    FlSpot(4, 130.0),
-    FlSpot(5, 160.0),
+    FlSpot(0, 300.0),
+    FlSpot(1, 200.0),
+    FlSpot(2, 100.0),
+    FlSpot(3, 200.0),
+    FlSpot(4, 50.0),
+    FlSpot(5, 250.0),
     FlSpot(6, 190.0),
-    FlSpot(7, 150.0),
+    FlSpot(7, 100.0),
     FlSpot(8, 170.0),
-    FlSpot(9, 180.0),
-    FlSpot(10, 140.0),
-    FlSpot(11, 150.0),
+    FlSpot(9, 100.0),
+    FlSpot(10, 150.0),
+    FlSpot(11, 100.0),
   ];
 
   int _currentIndex = 0;
@@ -66,36 +66,67 @@ class _StocksPageState extends State<StocksPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff0E1117),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0xff0E1117),
+        toolbarHeight: 140,
+        backgroundColor: Colors.white,
         elevation: 0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.blueGrey),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-        title: Text(
-          'Stocks',
-          style: TextStyle(
-            color: Colors.blueGrey.shade200,
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+        title: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.only(right: 80, top: 30),
+              child: Text(
+              'Home',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top:10),
+              child: Text(
+              'Aug 04 - Aug 10',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top:10),
+              child: Text(
+              'Vs. Jul 28 - jul 03',
+              style: TextStyle(
+                color: Colors.grey.shade300,
+                fontSize: 18,
+              ),
+            ),
+            )
+          ],
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.search, color: Colors.blueGrey,),
+         Container(
+           height: 50,
+           width: 50,
+           margin: EdgeInsets.only(right: 12),
+           child:  IconButton(
+            icon: Icon(Icons.settings, color: Colors.blueGrey,),
             onPressed: () {},
           ),
+         )
         ],
       ),
       body: Container(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            FadeInUp(
+            SizedBox(height: 20,),
+            Container(
+              margin: EdgeInsets.only(right: 150),
+              child:  FadeInUp(
               duration: Duration(milliseconds: 1000),
               from: 30,
               child: Text(
@@ -107,8 +138,11 @@ class _StocksPageState extends State<StocksPage> {
                   ),
               ),
             ),
+            ),
             SizedBox(height: 10,),
-            FadeInUp(
+            Container(
+              margin: EdgeInsets.only(right: 200 ),
+              child:  FadeInUp(
               duration: Duration(milliseconds: 1000),
               from: 30,
               child: Text(
@@ -119,6 +153,7 @@ class _StocksPageState extends State<StocksPage> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            ),
             ),
             SizedBox(height: 100),
             FadeInUp(
@@ -133,63 +168,149 @@ class _StocksPageState extends State<StocksPage> {
                 )
               ),
             ),
-            AnimatedContainer(
-              duration: Duration(milliseconds: 500),
-              height: MediaQuery.of(context).size.height * 0.3,
-              padding: EdgeInsets.all(20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _currentIndex = 0;
-                      });
-                    },
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: _currentIndex == 0 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
-                      ),
-                      child: Text("D", style: TextStyle(color: _currentIndex == 0 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _currentIndex = 1;
-                      });
-                    },
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 500),
-                      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: _currentIndex == 1 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
-                      ),
-                      child: Text("M", style: TextStyle(color: _currentIndex == 1 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _currentIndex = 2;
-                      });
-                    },
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 500),
-                      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: _currentIndex == 2 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
-                      ),
-                      child: Text("Y", style: TextStyle(color: _currentIndex == 2 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
-                    ),
-                  ),
-                ],
-              )
-            ),
+            // AnimatedContainer(
+            //   duration: Duration(milliseconds: 500),
+            //   height: MediaQuery.of(context).size.height * 0.3,
+            //   padding: EdgeInsets.all(20),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //     children: [
+            //       GestureDetector(
+            //         onTap: () {
+            //           setState(() {
+            //             _currentIndex = 0;
+            //           });
+            //         },
+            //         child: Container(
+            //           padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 15.0),
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(10),
+            //             color: _currentIndex == 0 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
+            //           ),
+            //           child: Text("Mon", style: TextStyle(color: _currentIndex == 0 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
+            //         ),
+            //       ),
+            //       GestureDetector(
+            //         onTap: () {
+            //           setState(() {
+            //             _currentIndex = 1;
+            //           });
+            //         },
+            //         child: AnimatedContainer(
+            //           duration: Duration(milliseconds: 500),
+            //           padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 15.0),
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(10),
+            //             color: _currentIndex == 1 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
+            //           ),
+            //           child: Text("Tue", style: TextStyle(color: _currentIndex == 1 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
+            //         ),
+            //       ),
+            //       GestureDetector(
+            //         onTap: () {
+            //           setState(() {
+            //             _currentIndex = 2;
+            //           });
+            //         },
+            //         child: AnimatedContainer(
+            //           duration: Duration(milliseconds: 500),
+            //           padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 15.0),
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(10),
+            //             color: _currentIndex == 2 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
+            //           ),
+            //           child: Text("Wed", style: TextStyle(color: _currentIndex == 2 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
+            //         ),
+                    
+            //       ),
+            //       GestureDetector(
+            //         onTap: () {
+            //           setState(() {
+            //             _currentIndex = 3;
+            //           });
+            //         },
+            //         child: AnimatedContainer(
+            //           duration: Duration(milliseconds: 500),
+            //           padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 15.0),
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(10),
+            //             color: _currentIndex == 3 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
+            //           ),
+            //           child: Text("Thu", style: TextStyle(color: _currentIndex == 3 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
+            //         ),
+                    
+            //       ),
+            //       GestureDetector(
+            //         onTap: () {
+            //           setState(() {
+            //             _currentIndex = 4;
+            //           });
+            //         },
+            //         child: AnimatedContainer(
+            //           duration: Duration(milliseconds: 500),
+            //           padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 15.0),
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(10),
+            //             color: _currentIndex == 4 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
+            //           ),
+            //           child: Text("Wed", style: TextStyle(color: _currentIndex == 4 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
+            //         ),
+                    
+            //       ),
+            //       GestureDetector(
+            //         onTap: () {
+            //           setState(() {
+            //             _currentIndex = 5;
+            //           });
+            //         },
+            //         child: AnimatedContainer(
+            //           duration: Duration(milliseconds: 500),
+            //           padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 15.0),
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(10),
+            //             color: _currentIndex == 5 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
+            //           ),
+            //           child: Text("Fri", style: TextStyle(color: _currentIndex == 5 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
+            //         ),
+                    
+            //       ),
+            //       GestureDetector(
+            //         onTap: () {
+            //           setState(() {
+            //             _currentIndex = 6;
+            //           });
+            //         },
+            //         child: AnimatedContainer(
+            //           duration: Duration(milliseconds: 500),
+            //           padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 15.0),
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(10),
+            //             color: _currentIndex == 6 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
+            //           ),
+            //           child: Text("Sat", style: TextStyle(color: _currentIndex == 6 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
+            //         ),
+            //       ),
+            //       GestureDetector(
+            //         onTap: () {
+            //           setState(() {
+            //             _currentIndex = 7;
+            //           });
+            //         },
+            //         child: AnimatedContainer(
+            //           duration: Duration(milliseconds: 500),
+            //           padding: EdgeInsets.symmetric(horizontal: 2.0, vertical: 15.0),
+            //           decoration: BoxDecoration(
+            //             borderRadius: BorderRadius.circular(10),
+            //             color: _currentIndex == 7 ? Color(0xff161b22) : Color(0xff161b22).withOpacity(0.0),
+            //           ),
+            //           child: Text("Sun", style: TextStyle(color: _currentIndex == 7 ? Colors.blueGrey.shade200 : Colors.blueGrey, fontSize: 20),),
+            //         ),
+                    
+            //       ),
+            //     ],
+            //   )
+            // ),
+            SizedBox(height: 50,)
           ]
         ),
       )
@@ -198,66 +319,68 @@ class _StocksPageState extends State<StocksPage> {
 
   // Charts Data
   List<Color> gradientColors = [
-    const Color(0xffe68823),
-    const Color(0xffe68823),
+    const Color(0xff02B375),
+    const Color(0xff02B375),
   ];
 
   LineChartData mainData() {
     return LineChartData(
+      
       borderData: FlBorderData(
         show: false,
       ),
       gridData: FlGridData(
         show: false,
-        horizontalInterval: 1.6,
-        drawVerticalLine: false
+        drawVerticalLine: false,
+        drawHorizontalLine: true,
+        horizontalInterval: 1.5,
       ),
       titlesData: FlTitlesData(
-        show: false,
+        show: true,
         rightTitles: SideTitles(showTitles: false),
         topTitles: SideTitles(showTitles: false),
+
         bottomTitles: SideTitles(
-          showTitles: false,
-          reservedSize: 22,
+          showTitles: true,
           interval: 1,
           getTextStyles: (context, value) => const TextStyle(
-            color: Color(0xff68737d),
+            color: Colors.grey,
             fontWeight: FontWeight.bold,
             fontSize: 8
           ),
           getTitles: (value) {
             switch (value.toInt()) {
-              case 1:
+              case 0:
                 return 'JAN';
-              case 2:
+              case 1:
                 return 'FEB';
-              case 3:
+              case 2:
                 return 'MAR';
-              case 4:
+              case 3:
                 return 'APR';
-              case 5:
+              case 4:
                 return 'MAY';
-              case 6:
+              case 5:
                 return 'JUN';
-              case 7:
+              case 6:
                 return 'JUL';
-              case 8:
+              case 7:
                 return 'AUG';
-              case 9:
+              case 8:
                 return 'SEP';
-              case 10:
+              case 9:
                 return 'OCT';
-              case 11:
+              case 10:
                 return 'NOV';
-              case 12:
+              case 11:
                 return 'DEC';
             }
             return '';
           },
-          margin: 10,
+          margin: 20,
         ),
         leftTitles: SideTitles(
-          showTitles: false,
+          showTitles: true,
           interval: 1,
           getTextStyles: (context, value) => const TextStyle(
             color: Color(0xff67727d),
@@ -267,21 +390,23 @@ class _StocksPageState extends State<StocksPage> {
           
           getTitles: (value) {
             switch (value.toInt()) {
-              case 1:
-                return '10k';
-              case 3:
+              case 0:
+                return '0';
+              case 100:
                 return '30k';
-              case 5:
+              case 200:
                 return '50k';
+              case 300:
+                return '60K';  
             }
             return '';
           },
         ),
       ),
       minX: 0,
-      maxX: _currentIndex == 0 ? _daylySpots.length-1.toDouble() : _currentIndex == 1 ? _monthlySpots.length-1.toDouble() : _currentIndex == 2 ? _daylySpots.length-20.toDouble() : _daylySpots.length.toDouble(),
+      maxX: _monthlySpots.length-1.toDouble(),
       minY: 0,
-      maxY: 200,
+      maxY: 300,
       lineTouchData: LineTouchData(
         getTouchedSpotIndicator: (LineChartBarData barData, List<int> spotIndexes) {
           return spotIndexes.map((index) {
@@ -292,7 +417,7 @@ class _StocksPageState extends State<StocksPage> {
                 dashArray: [3, 3],
               ),
               FlDotData(
-                show: false,
+                show: true,
                 getDotPainter: (spot, percent, barData, index) =>
                   FlDotCirclePainter(
                     radius: 8,
@@ -310,12 +435,12 @@ class _StocksPageState extends State<StocksPage> {
         enabled: true,
         touchTooltipData: LineTouchTooltipData(
           tooltipPadding: const EdgeInsets.all(8),
-          tooltipBgColor: Color(0xff2e3747).withOpacity(0.8),
+          tooltipBgColor: Color(0xffF3FCF9).withOpacity(0.8),
           getTooltipItems: (touchedSpots) {
             return touchedSpots.map((touchedSpot) {
               return LineTooltipItem(
                 '\$${touchedSpot.y.round()}.00',
-                const TextStyle(color: Colors.white, fontSize: 12.0),
+                const TextStyle(color: Colors.black, fontSize: 12.0),
                 
               );
             }).toList();
@@ -325,20 +450,20 @@ class _StocksPageState extends State<StocksPage> {
       ),
       lineBarsData: [
         LineChartBarData(
-          spots: _currentIndex == 0 ? _daylySpots : _currentIndex == 1 ? _monthlySpots : _daylySpots,
+          spots: _monthlySpots,
           isCurved: true,
           colors: gradientColors,
           barWidth: 2,
           dotData: FlDotData(
-            show: false,
+            show: true,
           ),
           belowBarData: BarAreaData(
             show: true,
             gradientFrom: Offset(0, 0),
             gradientTo: Offset(0, 1),
             colors: [
-              Color(0xffe68823).withOpacity(0.1),
-              Color(0xffe68823).withOpacity(0),
+              Color(0xffF0FCFA),
+              Color(0xffF0FCFA)
             ]
           ),
         )
